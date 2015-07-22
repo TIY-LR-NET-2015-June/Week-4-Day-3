@@ -17,7 +17,7 @@ namespace W4D3HW
             routes.MapRoute(
                 name: "Users",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "User", action = "Index", id = UrlParameter.Optional }
             );
 
             routes.MapRoute(
