@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using FileHelpers;
 
 namespace Week4.Day3.Models
 {
+    [DelimitedRecord(" ")]
     public class User
     {
-        public static string FirstName { get; set; }
-        public static string LastName { get; set; }
-        public static string Email { get; set; }
-
-        string Name = FirstName + " " + LastName;
+        public string FirstName;
+        public string LastName;
+        public string Email;
     }
 }
