@@ -17,25 +17,26 @@ namespace Week4.Day3.Controllers
         }
 
         // GET: Users/Parse
-        public string Parse()
+        public ActionResult Parse()
         {
             var engine = new FileHelperEngine<User>();
-            var result = engine.ReadFileAsList("C://psf/Home/Desktop/TIY/Week-4-Day-3/Week4.Day3/Week4.Day3/users.txt");
-            return HttpUtility.HtmlEncode(result.First());
+            var result = engine.ReadFileAsList("C:/TIY/Projects/Week-4-Day-3/Week4.Day3/Week4.Day3/Files/users.txt");
+            engine.WriteFile("Users", result);
+            return RedirectToAction("Index");
         }
 
-        // POST: Users/Create
+        // POST: Users/ViewUsers
         [HttpPost]
-        public ActionResult Create(List<User> users)
+        public ActionResult ViewUsers()
         {
             try
             {
                 // TODO: Add insert logic here
-                return RedirectToAction("Index");
+                return View();
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
     }
