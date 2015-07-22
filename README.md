@@ -7,6 +7,13 @@ Today
 1. action results
 1. vanity urls
 
+'''c#
+  routes.MapRoute(
+              name: "AllSchools",
+              url: "GetAllSchools/{currentPage}",
+              defaults: new { controller = "School", action = "ShowAll", numberPerPage=5, currentPage = 1 }
+          );
+'''
 
 #Homework
 
