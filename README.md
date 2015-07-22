@@ -2,6 +2,7 @@
 
 
 Today
+----
 1. Review MVC
 1. action results
 1. vanity urls
