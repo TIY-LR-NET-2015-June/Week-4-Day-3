@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
@@ -106,16 +107,14 @@ namespace WebApplication1.Controllers
         public ActionResult Download()
         {
             List<People> sheet = (List<People>)Session["People"];
-            string[] lines = new string[sheet.Count + 1];
-            lines[0] = "First Name,Last Name,e-mail address";
-            int j = 1;
+            StringBuilder lines = new StringBuilder();
+            lines.AppendLine("First Name,Last Name,e-mail address");
             foreach (People p in sheet)
             {
-                lines[j] = (p.FirstName + "," + p.LastName + "," + p.EMail);
-                j++;
+                lines.AppendLine(p.FirstName + "," + p.LastName + "," + p.EMail);
             }
-            System.IO.File.WriteAllLines(@"C:\Users\Mike\Desktop\The Iron Yard\week4day3\WebApplication1\WebApplication1\files\outputfile.csv", lines);
-            return File(@"C:\Users\Mike\Desktop\The Iron Yard\week4day3\WebApplication1\WebApplication1\files\outputfile.csv", "file.csv");
+            byte[] addressData = System.Text.ASCIIEncoding.Default.GetBytes(lines.ToString());
+            return File(addressData, "text/html" , "outputfile.csv");
         }
     }
 }
