@@ -10,11 +10,6 @@ namespace WebApplication1.Controllers
 {
     public class PeopleController : Controller
     {
-        
-        
-        
-        
-
         // GET: People
         public ActionResult Index()
         {
@@ -40,6 +35,10 @@ namespace WebApplication1.Controllers
                 People p = new People(cell[0], cell[1], cell[2]);
                 sheet.Add(p);
                 Session["People"] = sheet;
+            }
+            if ((bool)Session["goBackToDownload"] == true)
+            {
+                return RedirectToAction("Download");
             }
 
             return RedirectToAction("Index");
@@ -106,6 +105,14 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Download()
         {
+            bool goBackToDownload = false;
+            if((List<People>)Session["People"] == null)
+            {
+                goBackToDownload = true;
+                Session["goBackToDownload"] = goBackToDownload;
+                return RedirectToAction("Create");
+            }
+
             List<People> sheet = (List<People>)Session["People"];
             StringBuilder lines = new StringBuilder();
             lines.AppendLine("First Name,Last Name,e-mail address");

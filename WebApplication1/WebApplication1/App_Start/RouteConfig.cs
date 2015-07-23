@@ -14,6 +14,12 @@ namespace WebApplication1
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "Download",
+               url: "localhost/UserCSV",
+               defaults: new { controller = "People", action = "Download" }
+           );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
