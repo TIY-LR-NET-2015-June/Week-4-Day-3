@@ -15,7 +15,7 @@ namespace WebApplication1
 
             routes.MapRoute(
                name: "Download",
-               url: "localhost/UserCSV",
+               url: "UserCSV",
                defaults: new { controller = "People", action = "Download" }
            );
 

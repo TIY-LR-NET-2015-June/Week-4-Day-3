@@ -36,10 +36,6 @@ namespace WebApplication1.Controllers
                 sheet.Add(p);
                 Session["People"] = sheet;
             }
-            if ((bool)Session["goBackToDownload"] == true)
-            {
-                return RedirectToAction("Download");
-            }
 
             return RedirectToAction("Index");
         }
@@ -105,11 +101,8 @@ namespace WebApplication1.Controllers
         }
         public ActionResult Download()
         {
-            bool goBackToDownload = false;
             if((List<People>)Session["People"] == null)
             {
-                goBackToDownload = true;
-                Session["goBackToDownload"] = goBackToDownload;
                 return RedirectToAction("Create");
             }
 
