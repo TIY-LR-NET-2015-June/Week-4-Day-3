@@ -1,0 +1,29 @@
+﻿@model List<Week4.Day3.Models.User>
+
+@{
+    ViewBag.Title = "Parse";
+}
+
+<h2>Parse</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>First Name</th><th>Last Name</th><th>Email</th>
+    </tr>
+@{var thisItem = 0; }
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Model.ElementAt(thisItem).FirstName</td>
+        <td>@Model.ElementAt(thisItem).LastName</td>
+        <td>@Model.ElementAt(thisItem).Email</td>
+    </tr>
+    thisItem++;
+}
+    
+
+</table>
+<div><a href="./ViewUsers">Download CSV</a></div>
