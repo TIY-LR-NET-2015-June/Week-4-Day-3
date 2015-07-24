@@ -14,6 +14,12 @@ namespace Week4_Day3
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "VanityURL",
+                url: "UserCSV",
+                defaults: new { controller = "Home", action = "Index"}
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
